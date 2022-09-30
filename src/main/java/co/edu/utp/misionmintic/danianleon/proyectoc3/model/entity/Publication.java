@@ -26,6 +26,9 @@ public class Publication {
     private String imageUrl;
 
     @ManyToOne
+    private User user;
+
+    @ManyToOne
     private Category category;
     
 }

@@ -15,21 +15,15 @@
 </head>
 
 <body>
-    <div class="container main-container m-10" >
+    <div class="container main-container m-10">
         <div class="text-center">
             <div th:insert="layout/header :: header">...</div>
         </div>
         <div class="container">
-            <div class="float-start">
-                <h5 class="ml-2">Categorias</h5>
-                <ul class="list-group">
-                    <a th:each="cat: ${categories}" th:text="${cat.name}" th:href="@{/index/{id}(id=${cat.id})}"
-                    th:class=" 'list-group-item list-group-item-action'+'nav-link '+${cat.id == id ? 'active' : ''}" aria-current="page"></a>
-                </ul>
-            </div>
             <div class="container mt-3">
                 <div class="row">
-                    <div th:if="${!publications.isEmpty()}" th:each="pub: ${publications}" class="col-xs-12 col-sm-6 col-lg-3">
+                    <div th:if="${!publications.isEmpty()}" th:each="pub: ${publications}"
+                        class="col-xs-12 col-sm-6 col-lg-3">
                         <div class="card mb-4 box-shadow">
                             <img th:src="${pub.imageUrl}" class="card-img-top"
                                 data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
@@ -40,7 +34,8 @@
                                 <p th:text="${pub.description}" class="card-text"></p>
                                 <p class="card-text">Categoria: <span th:text="${pub.category.name}"></span></p>
                                 <p class="card-text">Cambio por: <span th:text="${pub.changeFor}"></span></p>
-                                <p class="card-text">Publicado por: <span th:text="${pub.user.name} + ' ' + ${pub.user.lastname}"></span></p>
+                                <p class="card-text">Publicado por: <span
+                                        th:text="${pub.user.name} + ' ' + ${pub.user.lastname}"></span></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button"
@@ -53,7 +48,7 @@
                         </div>
                     </div>
                     <div th:if="${publications.isEmpty()}" class="text-center">
-                        <span>No existen registros para  esta Categoria.</span>
+                        <span>No existen registros para esta Categoria.</span>
                     </div>
                 </div>
                 <nav aria-label="Page navigation example">

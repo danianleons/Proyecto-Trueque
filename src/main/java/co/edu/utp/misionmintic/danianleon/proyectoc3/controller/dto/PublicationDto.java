@@ -17,4 +17,5 @@ public class PublicationDto {
     private String imageUrl;
     private String status;
     private CategoryDto category;
+    private UserDto user;
 }

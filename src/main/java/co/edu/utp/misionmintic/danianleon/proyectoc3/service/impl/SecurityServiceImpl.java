@@ -15,6 +15,22 @@ public class SecurityServiceImpl implements SecurityService {
     private final UserRepository userRepository;
 
     @Override
+    public UserDto validateUser(String username, String password) {
+
+        var userOp = userRepository.findByEmailAndPassword(username, password);
+        if (userOp.isEmpty()) {
+            throw new RuntimeException("Credenciales Inválidas");
+        }
+
+        var user = userOp.get();
+        return UserDto.builder()
+                .name(user.getName())
+                .lastname(user.getLastname())
+                .email(user.getEmail())
+                .build();
+    }
+
+    @Override
     public void createUser(UserDto userDto) {
         var user = new User();
         user.setEmail(userDto.getEmail());

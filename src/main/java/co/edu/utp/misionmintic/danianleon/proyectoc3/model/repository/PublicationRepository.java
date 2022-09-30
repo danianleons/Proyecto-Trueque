@@ -12,4 +12,6 @@ public interface PublicationRepository extends JpaRepository<Publication, Intege
 
     List<Publication> findAllByCategoryIdIn(List<Integer> categoryIds);
 
+    List<Publication> findAllByUserEmail(String userEmail);
+
 }

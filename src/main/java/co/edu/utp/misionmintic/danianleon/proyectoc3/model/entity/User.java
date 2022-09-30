@@ -1,7 +1,10 @@
 package co.edu.utp.misionmintic.danianleon.proyectoc3.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -28,4 +31,7 @@ public class User {
     private String city;
 
     private String phone;
+
+    @OneToMany(mappedBy = "user")
+    private List<Publication> publications;
 }
