@@ -1,5 +1,6 @@
 package co.edu.utp.misionmintic.danianleon.proyectoc3.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class PublicationServiceImpl implements PublicationService {
 
         @Override
         public List<PublicationDto> getPublicationsByCategoryId(Integer categoryId) {
-                var publications = publicacionRepository.findAllByCategoryId(categoryId);
+                var publications = publicacionRepository.findAllByCategoryIdOrderByDateDesc(categoryId);
 
                 var categoryPublications = publications.stream()
                                 .map(publication -> PublicationDto.builder()
@@ -37,6 +38,7 @@ public class PublicationServiceImpl implements PublicationService {
                                                                 publication.getCategory().getName()))
                                                 .user(new UserDto(publication.getUser().getName(),
                                                                 publication.getUser().getLastname()))
+                                                .date(publication.getDate())
                                                 .build())
                                 .collect(Collectors.toList());
 
@@ -45,7 +47,7 @@ public class PublicationServiceImpl implements PublicationService {
 
         @Override
         public List<PublicationDto> getPublications() {
-                var publications = publicacionRepository.findAll();
+                var publications = publicacionRepository.findAllByOrderByDateDesc();
 
                 var categoryPublications = publications.stream()
                                 .map(publication -> PublicationDto.builder()
@@ -57,6 +59,7 @@ public class PublicationServiceImpl implements PublicationService {
                                                                 publication.getCategory().getName()))
                                                 .user(new UserDto(publication.getUser().getName(),
                                                                 publication.getUser().getLastname()))
+                                                .date(publication.getDate())
                                                 .build())
                                 .collect(Collectors.toList());
 
@@ -77,13 +80,14 @@ public class PublicationServiceImpl implements PublicationService {
                 publication.setTittle(publicationDto.getTitle());
                 publication.setCategory(category.get());
                 publication.setUser(user.get());
+                publication.setDate(new Date());
 
                 publicacionRepository.save(publication);
         }
 
         @Override
         public List<PublicationDto> getPublicationsByUserEmail(String userEmail) {
-                var publications = publicacionRepository.findAllByUserEmail(userEmail);
+                var publications = publicacionRepository.findAllByUserEmailOrderByDateDesc(userEmail);
 
                 var userPublications = publications.stream()
                                 .map(publication -> PublicationDto.builder()
@@ -95,6 +99,7 @@ public class PublicationServiceImpl implements PublicationService {
                                                                 publication.getCategory().getName()))
                                                 .user(new UserDto(publication.getUser().getName(),
                                                                 publication.getUser().getLastname()))
+                                                .date(publication.getDate())
                                                 .build())
                                 .collect(Collectors.toList());
 

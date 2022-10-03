@@ -19,7 +19,7 @@ public class SecurityServiceImpl implements SecurityService {
 
         var userOp = userRepository.findByEmailAndPassword(username, password);
         if (userOp.isEmpty()) {
-            throw new RuntimeException("Credenciales Inválidas");
+            throw new RuntimeException("Credenciales Inválidas. Por favor, intentelo de nuevo.");
         }
 
         var user = userOp.get();

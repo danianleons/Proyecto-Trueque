@@ -3,11 +3,11 @@ const login = () => {
     const password = document.getElementById("password").value;
 
     if (username == "") {
-        showError("Username is required");
+        showError("El nombre de usuario es requerido");
         return;
     }
     if (password == "") {
-        showError("Password is required");
+        showError("La contraseña es requerida");
         return;
     }
 

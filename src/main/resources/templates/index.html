@@ -47,7 +47,7 @@
                                             class="btn btn-sm btn-success btn-outline-secondary text-white">Ver
                                             más...</button>
                                     </div>
-                                    <small class="text-muted">21/09/2022</small>
+                                    <small class="text-muted" th:text="${#dates.format(pub.date, 'dd-MMM-yyyy')}"></small>
                                 </div>
                             </div>
                         </div>
