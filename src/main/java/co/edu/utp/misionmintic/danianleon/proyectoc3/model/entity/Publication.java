@@ -2,6 +2,8 @@ package co.edu.utp.misionmintic.danianleon.proyectoc3.model.entity;
 
 
 import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity; 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +25,8 @@ public class Publication {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String tittle;
+    @Column(name = "tittle")
+    private String title;
     private String description;
     private String status;   
     private String changeFor;

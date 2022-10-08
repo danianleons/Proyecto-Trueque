@@ -1,7 +1,8 @@
 package co.edu.utp.misionmintic.danianleon.proyectoc3.controller.dto;
 
 import java.util.Date;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,9 @@ import lombok.Builder;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PublicationDto {
+    
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String title;
     private String description;
     private String changeFor;

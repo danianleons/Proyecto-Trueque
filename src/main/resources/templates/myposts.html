@@ -19,6 +19,8 @@
         <div class="text-center">
             <div th:insert="layout/header :: header">...</div>
         </div>
+        <div id="messageRegisterForm">
+        </div>        
         <div class="container">
             <div class="container mt-3">
                 <div class="row">
@@ -38,12 +40,13 @@
                                         th:text="${pub.user.name} + ' ' + ${pub.user.lastname}"></span></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button"
+                                        <a type="button" th:href="${'/publication/'+pub.id}"
                                             class="btn btn-sm btn-success btn-outline-secondary text-white">
-                                            Actualizar</button>
+                                            Actualizar</a>
                                         <button type="button"
-                                            class="btn btn-sm btn-success btn-outline-secondary text-white">Borrar
-                                        </button>
+                                            class="btn btn-sm btn-danger btn-outline-secondary text-white"
+                                            th:attr="onclick=|deletePublication('${pub.id}')|">Borrar
+                                        </button>                                        
                                     </div>
                                 </div>
                                 <small class="text-muted" th:text="${#dates.format(pub.date, 'dd-MMM-yyyy')}"></small>
@@ -75,6 +78,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
+    <script src="/js/publication.js"></script>
 </body>
 
 </html>
